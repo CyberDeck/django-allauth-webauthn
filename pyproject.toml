@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-allauth-webauthn"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["H. Gregor Molter <gregor.molter@secretlab.de>"]
 readme = "README.rst"
