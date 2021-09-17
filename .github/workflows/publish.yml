@@ -1,7 +1,9 @@
-name: Publish (TestPyPI)
+name: Publish (PyPI)
 
 on:
   workflow_dispatch:
+  release:
+    types: [created]
 
 jobs:
   deploy:
@@ -22,5 +24,4 @@ jobs:
       run: |
         poetry version $(git describe --tags --abbrev=0)
         poetry build
-        poetry config repositories.testpypi https://test.pypi.org/legacy/
-        poetry publish --repository testpypi --username __token__ --password ${{ secrets.TEST_PYPI_TOKEN }}
+        poetry publish --username __token__ --password ${{ secrets.PYPI_TOKEN }}
