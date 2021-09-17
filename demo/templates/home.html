@@ -1,0 +1,41 @@
+<h1>Django Allauth WebAuthn Demo</h1>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% if user.is_authenticated %}
+{% include 'django_allauth_webauthn/register-script.html' %}
+<p>Welcome {{ user.username }} !!!</p>
+<p>Registered devices: {{ tokens|length }}</p>
+{% for token in tokens %}
+<p><b>Device {{ forloop.counter }}</b></p>
+<table><tbody>
+<tr><th scope="row" style="vertical-align: top; text-align: left;">Name:</th><td>
+<form method="post" action="{% url 'webauthn-rename' pk=token.id %}">{% csrf_token %}
+<input type="text" name="name" value="{{ token.name }}" />
+<input type="submit" value="Rename" />
+</form>
+</td></tr>
+<tr><th scope="row" style="text-align: left;">Credential ID:</th><td><pre>{{ token.credential_id }}</pre></td></tr>
+<tr><th scope="row" style="text-align: left;">Public Key:</th><td><pre>{{ token.public_key }}</pre></td></tr>
+<tr><th scope="row" style="text-align: left;">Sign Counter:</th><td>{{ token.sign_counter }}</td></tr>
+<tr><th scope="row" style="text-align: left;">Last used:</th><td>{{ token.last_used_on }}</td></tr>
+<tr><th scope="row" style="vertical-align: top; text-align: left;">Actions:</th><td>
+<form method="post" action="{% url 'webauthn-remove' pk=token.id %}">{% csrf_token %}
+<input type="submit" value="Remove" />
+</form>
+</td></tr>
+</tbody></table>
+<hr/>
+{% endfor %}
+</tbody>
+</table>
+<p><button id="webauthn-register">Register</button></p>
+<a href="{% url 'account_logout' %}">Sign out</a>
+{% else %}
+<p><a href="{% url 'account_signup' %}">Sign Up</a></p>
+<p><a href="{% url 'account_login' %}">Sign In</a></p>
+{% endif %}

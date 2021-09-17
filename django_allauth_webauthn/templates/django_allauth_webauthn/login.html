@@ -1,0 +1,7 @@
+{% block content %}
+<h1>Authentication with Security Token Required</h1>
+
+<p>Your account has authentication with an additional security token enabled.</p>
+<p>Please authenticate yourself with your security token to proceed with your log in.</p>
+{% include 'django_allauth_webauthn/login-script.html' %}
+{% endblock %}

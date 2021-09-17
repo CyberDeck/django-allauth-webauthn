@@ -1,0 +1,43 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.0.1
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: check-yaml
+  - id: check-added-large-files
+- repo: https://github.com/asottile/reorder_python_imports
+  rev: v2.6.0
+  hooks:
+  - id: reorder-python-imports
+- repo: https://github.com/asottile/pyupgrade
+  rev: v2.26.0
+  hooks:
+  - id: pyupgrade
+    args: [--py36-plus]
+- repo: https://github.com/psf/black
+  rev: 21.9b0
+  hooks:
+  - id: black
+    language_version: python3.8
+    args: [--line-length=120]
+- repo: https://gitlab.com/pycqa/flake8
+  rev: 3.9.2
+  hooks:
+  - id: flake8
+    additional_dependencies: [flake8-bugbear]
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v0.910
+  hooks:
+  - id: mypy
+    exclude: ^(manage.py|docs/conf.py)
+- repo: local
+  hooks:
+  - id: tests
+    name: tests
+    entry: poetry run ./manage.py test
+    language: system
+    types: [python]
+    pass_filenames: false
