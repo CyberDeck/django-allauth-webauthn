@@ -122,7 +122,7 @@ A simple demo Django project is included within the *demo* folder and may be run
     # Migrate the demo database first (only needed once)
     $ poetry run python manage.py migrate
     # Run the SSL demo server (a self-signed certificate and private key is created during first run)
-    & poetry run python manage.py runserver_plus --cert test.crt
+    $ poetry run python manage.py runserver_plus --cert test.crt
 
 .. note::
 
