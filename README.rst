@@ -1,3 +1,6 @@
+.. image:: https://codecov.io/gh/CyberDeck/django-allauth-webauthn/branch/master/graph/badge.svg?token=SANFSR1SYD
+    :target: https://codecov.io/gh/CyberDeck/django-allauth-webauthn
+
 Welcome to django-allauth-webauthn!
 ===================================
 
