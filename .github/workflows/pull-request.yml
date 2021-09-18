@@ -1,6 +1,6 @@
-name: Code Coverage
+name: Pull Request
 
-on: [push, workflow_dispatch]
+on: pull_request
 
 jobs:
   test:
@@ -46,18 +46,23 @@ jobs:
       - name: Install library
         run: poetry install --no-interaction
       #----------------------------------------------
+      #     run pre-commit hooks to verify passes
+      #----------------------------------------------
+      - name: Run pre-commit hooks
+        run: |
+          poetry run pre-commit install
+          poetry run pre-commit run --all-files trailing-whitespace
+          poetry run pre-commit run --all-files end-of-file-fixer
+          poetry run pre-commit run --all-files check-yaml
+          poetry run pre-commit run --all-files reorder-python-imports
+          poetry run pre-commit run --all-files pyupgrade
+          poetry run pre-commit run --all-files black
+          poetry run pre-commit run --all-files flake8
+          poetry run pre-commit run --all-files mypy
+      #----------------------------------------------
       #              run test suite
       #----------------------------------------------
       - name: Run tests
         run: |
           poetry run coverage run ./manage.py test
-          poetry run coverage xml
-      #----------------------------------------------
-      #              upload to codecov
-      #----------------------------------------------
-      - name: Upload to CodeCov
-        uses: codecov/codecov-action@v2
-        with:
-          files: ./coverage.xml
-          fail_ci_if_error: true # optional (default = false)
-          verbose: true # optional (default = false)
+          poetry run coverage report -m
