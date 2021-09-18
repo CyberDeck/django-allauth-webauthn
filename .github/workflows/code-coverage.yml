@@ -46,9 +46,22 @@ jobs:
       - name: Install library
         run: poetry install --no-interaction
       #----------------------------------------------
+      #     run pre-commit hooks to verify passes
+      #----------------------------------------------
+      - name: Run pre-commit hooks
+        run: |
+          poetry run pre-commit run --all-files trailing-whitespace
+          poetry run pre-commit run --all-files end-of-file-fixer
+          poetry run pre-commit run --all-files check-yaml
+          poetry run pre-commit run --all-files reorder-python-imports
+          poetry run pre-commit run --all-files pyupgrade
+          poetry run pre-commit run --all-files black
+          poetry run pre-commit run --all-files flake8
+          poetry run pre-commit run --all-files mypy
+      #----------------------------------------------
       #              run test suite
       #----------------------------------------------
       - name: Run tests
         run: |
           poetry run coverage run ./manage.py test
-          coverage report -m
+          poetry run coverage report -m
