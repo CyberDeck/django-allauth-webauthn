@@ -50,5 +50,5 @@ jobs:
       #----------------------------------------------
       - name: Run tests
         run: |
-          poetry run coverage ./manage.py test
+          poetry run coverage run ./manage.py test
           coverage report -m
