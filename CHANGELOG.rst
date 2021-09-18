@@ -6,6 +6,11 @@ Changelog
 .. next (unreleased)
 .. ------------------------
 
+Version 0.1.2 (September 18, 2021)
+==================================
+
+- Added missing package description.
+
 Version 0.1.1 (September 18, 2021)
 ==================================
 
