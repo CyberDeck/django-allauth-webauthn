@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from typing import List
 
+from django.urls import reverse_lazy
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -141,7 +143,7 @@ ACCOUNT_ADAPTER = "django_allauth_webauthn.adapter.WebAuthnAdapter"
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
-LOGIN_REDIRECT_URL = "home"
+LOGIN_REDIRECT_URL = reverse_lazy("home")
 
 DJANGO_ALLAUTH_WEBAUTHN_DOMAIN = "localhost"
 DJANGO_ALLAUTH_WEBAUTHN_ORIGIN = "https://localhost:8000"

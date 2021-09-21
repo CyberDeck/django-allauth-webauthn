@@ -1,6 +1,8 @@
 from pathlib import Path
 from typing import List
 
+from django.urls.base import reverse_lazy
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -76,13 +78,13 @@ ACCOUNT_ADAPTER = "django_allauth_webauthn.adapter.WebAuthnAdapter"
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
-LOGIN_REDIRECT_URL = "home"
+LOGIN_REDIRECT_URL = reverse_lazy("home")
 
 DJANGO_ALLAUTH_WEBAUTHN_DOMAIN = "localhost"
 DJANGO_ALLAUTH_WEBAUTHN_ORIGIN = "https://localhost:8000"
 DJANGO_ALLAUTH_WEBAUTHN_NAME = "Webauthn Test"
 DJANGO_ALLAUTH_WEBAUTHN_ICON_URL = "https://localhost:8000/favicon.ico"
 
-DJANGO_ALLAUTH_WEBAUTHN_REGISTRATION_ERROR_URL = "test-registration-error"
-DJANGO_ALLAUTH_WEBAUTHN_LOGIN_ERROR_URL = "test-login-error"
-DJANGO_ALLAUTH_WEBAUTHN_REMOVE_RENAME_REDIRECT_URL = "removed-renamed-success"
+DJANGO_ALLAUTH_WEBAUTHN_REGISTRATION_ERROR_URL = reverse_lazy("test-registration-error")
+DJANGO_ALLAUTH_WEBAUTHN_LOGIN_ERROR_URL = reverse_lazy("test-login-error")
+DJANGO_ALLAUTH_WEBAUTHN_REMOVE_RENAME_REDIRECT_URL = reverse_lazy("removed-renamed-success")

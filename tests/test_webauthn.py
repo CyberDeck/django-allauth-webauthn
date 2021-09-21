@@ -88,7 +88,7 @@ class BaseTests:
 
             self.assertRedirects(
                 response,
-                reverse(settings.LOGIN_REDIRECT_URL),
+                settings.LOGIN_REDIRECT_URL,
                 fetch_redirect_response=False,
             )
             self.assertEqual(self.user_logged_in_count, 1)
@@ -163,7 +163,7 @@ class BaseTests:
             response = self.client.post(reverse("webauthn-register"))
             self.assertRedirects(
                 response,
-                reverse(settings.DJANGO_ALLAUTH_WEBAUTHN_REGISTRATION_ERROR_URL),
+                settings.DJANGO_ALLAUTH_WEBAUTHN_REGISTRATION_ERROR_URL,
                 fetch_redirect_response=False,
             )
             self.assertFalse(WebauthnData.objects.filter(user=user).exists())
@@ -203,7 +203,7 @@ class BaseTests:
             self.assertEqual(device.sign_counter, self.DEVICE["sign_counter"])
             self.assertRedirects(
                 response,
-                reverse(settings.LOGIN_REDIRECT_URL),
+                settings.LOGIN_REDIRECT_URL,
                 fetch_redirect_response=False,
             )
 

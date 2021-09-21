@@ -50,7 +50,7 @@ Default
 ``DJANGO_ALLAUTH_WEBAUTHN_REGISTRATION_REDIRECT_URL``
 -----------------------------------------------------
 
-Set this to a named URL to redirect the user to after a successful registration of a security token.
+Set this to an URL to redirect the user to after a successful registration of a security token.
 
 Default
     :setting:`LOGIN_REDIRECT_URL`
@@ -58,7 +58,7 @@ Default
 ``DJANGO_ALLAUTH_WEBAUTHN_REGISTRATION_ERROR_URL``
 --------------------------------------------------
 
-Set this to a named URL to redirect the user to after a aborted or failed registration of a security token.
+Set this to an URL to redirect the user to after a aborted or failed registration of a security token.
 
 Default
     :setting:`LOGIN_REDIRECT_URL`
@@ -66,7 +66,7 @@ Default
 ``DJANGO_ALLAUTH_WEBAUTHN_LOGIN_ERROR_URL``
 -------------------------------------------
 
-Set this to a named URL to redirect the user to after a failed two-factor authentication.
+Set this to an URL to redirect the user to after a failed two-factor authentication.
 
 Default
     :setting:`LOGIN_URL`
@@ -75,7 +75,7 @@ Default
 ``DJANGO_ALLAUTH_WEBAUTHN_REMOVE_RENAME_REDIRECT_URL``
 ------------------------------------------------------
 
-Set this to a named URL to redirect the user to after a security token was renamed or deleted.
+Set this to an URL to redirect the user to after a security token was renamed or deleted.
 
 Default
     :setting:`LOGIN_REDIRECT_URL`

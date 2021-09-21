@@ -6,6 +6,12 @@ Changelog
 .. next (unreleased)
 .. ------------------------
 
+Version 0.2.0 (September 21, 2021)
+==================================
+
+- URL handling corrected to plain URLs.
+
+
 Version 0.1.2 (September 18, 2021)
 ==================================
 

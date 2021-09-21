@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-allauth-webauthn"
-version = "0.1.2"
+version = "0.2.0"
 description = "Webauthn-based two-factor authentication for Django allauth"
 authors = ["H. Gregor Molter <gregor.molter@secretlab.de>"]
 readme = "README.rst"
