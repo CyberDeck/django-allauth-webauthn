@@ -81,3 +81,11 @@ Default
     :setting:`LOGIN_REDIRECT_URL`
 
 .. _sites framework: https://docs.djangoproject.com/en/dev/ref/contrib/sites/
+
+``DJANGO_ALLAUTH_WEBAUTHN_LOGIN_TEMPLATE``
+------------------------------------------
+
+Set this to a template to show the user that she has to authenticate with her security token.
+
+Default
+    ``django_allauth_webauthn/login.html``

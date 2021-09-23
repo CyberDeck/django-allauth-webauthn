@@ -24,3 +24,8 @@ REMOVE_RENAME_REDIRECT_URL = getattr(
     "DJANGO_ALLAUTH_WEBAUTHN_REMOVE_RENAME_REDIRECT_URL",
     settings.LOGIN_REDIRECT_URL,
 )
+
+
+def get_login_template():
+    """returns the login template"""
+    return getattr(settings, "DJANGO_ALLAUTH_WEBAUTHN_LOGIN_TEMPLATE", "django_allauth_webauthn/login.html")

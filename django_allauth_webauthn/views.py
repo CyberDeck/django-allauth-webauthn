@@ -97,7 +97,8 @@ class Register(LoginRequiredMixin, View):
 
 
 class Login(TemplateView):
-    template_name = "django_allauth_webauthn/login.html"
+    def get_template_names(self):
+        return [app_settings.get_login_template()]
 
     def dispatch(self, request, *args, **kwargs):
         # Redirect the user to the login page if they does not come from there,

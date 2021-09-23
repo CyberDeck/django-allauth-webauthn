@@ -6,6 +6,7 @@ from allauth.account.signals import user_logged_in
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.test import TestCase
+from django.test.utils import override_settings
 from django.urls import reverse
 
 from django_allauth_webauthn.models import WebauthnData
@@ -364,6 +365,14 @@ class BaseTests:
             self.assertTrue(user.webauthndata_set.filter(credential_id=self.DEVICE["credential_id"]).exists())
             self.client.post(reverse("webauthn-remove", kwargs={"pk": device.pk}))
             self.assertFalse(user.webauthndata_set.filter(credential_id=self.DEVICE["credential_id"]).exists())
+
+        @override_settings(DJANGO_ALLAUTH_WEBAUTHN_LOGIN_TEMPLATE="alternative_login.html")
+        def test_login_custom_template(self):
+            self.setup_testcase(id=2, devices=[self.DEVICE], set_session_user_id=True)
+            response = self.client.get(reverse("webauthn-login"))
+            self.assertEqual(response.status_code, 200)
+            self.assertTemplateUsed(response, "alternative_login.html")
+            self.assertInHTML("Alternative Login Template", str(response.content))
 
 
 class TestWebauthnCTAP2(BaseTests.TestWebauthn):
