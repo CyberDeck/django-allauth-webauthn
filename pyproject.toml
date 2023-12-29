@@ -23,7 +23,7 @@ exclude = [
 
 [tool.poetry.dependencies]
 python = "^3.10"
-Django = "^3.2.7"
+Django = "^4.2.8"
 django-allauth = "^0.45.0"
 webauthn = "^0.4.7"
 
@@ -40,6 +40,9 @@ Sphinx = "^4.2.0"
 sphinx-autobuild = "^2021.3.14"
 sphinx-rtd-theme = "^1.0.0"
 toml = "^0.10.2"
+
+[tool.poetry.group.dev.dependencies]
+django-upgrade = "^1.15.0"
 
 [tool.coverage.run]
 branch = true
